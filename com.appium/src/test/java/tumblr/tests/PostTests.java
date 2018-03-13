@@ -16,6 +16,7 @@ public class PostTests extends TestCase{
 	@Test
 	public void postTextTest(){
 		TextPostPage textPostPage = new StartPage(driver).logIn("test@test.com", "testtest").openComposeMenu().composeTextPost();
+		//to do - change the method
 		textPostPage.postText("Test Header", "Test Post");
 
 	}
