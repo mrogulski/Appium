@@ -2,6 +2,7 @@ package config;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 
 import io.appium.java_client.TouchAction;
@@ -10,6 +11,7 @@ import io.appium.java_client.android.AndroidDriver;
 public abstract class Page {
 	
 	protected static AndroidDriver driver;
+	private By accessLoactor = By.id("com.android.packageinstaller:id/permission_allow_button");
 	
 	public Page(AndroidDriver driver) {
 		this.driver = driver;
@@ -27,4 +29,10 @@ public abstract class Page {
 			action.moveTo(endX, endY).release().perform();
 
 		}
+	
+	public void allowAccess() {
+		if(driver.findElement(accessLoactor).isDisplayed()) {
+			driver.findElement(accessLoactor).click();
+		}
+	}
 }

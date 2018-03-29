@@ -18,7 +18,9 @@ public class PhotoPostPage extends Page{
 
 	}
 	
-	public void createPhotoPost(String text) {
+	public void postPhoto(String text) {
+		allowAccess();
+		allowAccess();//stupid but works
 		driver.findElement(firstImageLocator).click();
 		driver.findElement(nextButtonLocator).click();
 		driver.findElement(textFieldLocatorLocator).sendKeys(text);
