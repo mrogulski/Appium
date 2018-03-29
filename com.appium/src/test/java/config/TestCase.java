@@ -16,7 +16,7 @@ public class TestCase {
 	
 	protected static AndroidDriver driver;
 	private static String username = "marcinr123@onet.eu";
-	private static String password = "grazynka01";
+	private static String password = "test01test";
 	
 	
 	@BeforeClass
