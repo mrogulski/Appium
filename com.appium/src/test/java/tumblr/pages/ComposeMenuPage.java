@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import config.Page;
 import io.appium.java_client.android.AndroidDriver;
+import tumblr.pages.posts.PhotoPostPage;
 import tumblr.pages.posts.TextPostPage;
 
 public class ComposeMenuPage extends Page{
@@ -25,6 +26,11 @@ public class ComposeMenuPage extends Page{
 	public TextPostPage composeTextPost() {
 		driver.findElement(composeTextPostLocator).click();
 		return new TextPostPage(driver);
+	}
+	
+	public PhotoPostPage composePhotoPost() {
+		driver.findElement(composePhotoPostLocator).click();
+		return new PhotoPostPage(driver);
 	}
 
 }
