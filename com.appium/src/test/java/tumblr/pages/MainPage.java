@@ -13,7 +13,7 @@ public class MainPage extends Page{
 	private By dashboardLocator = By.id("DASHBOARD");
 	private By exploreLocator = By.id("EXPLORE");
 	private By messagesLocator = By.id("MESSAGES");
-	private By accountLocator = By.id("ACCOUNT");
+	private By accountLocator = By.id("com.tumblr:id/topnav_account_button_img_active");
 	
 	private By composePostLocator = By.id("com.tumblr:id/composer_fab");
 

@@ -9,10 +9,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.*;
 
 import io.appium.java_client.android.AndroidDriver;
+import tumblr.pages.MainPage;
+import tumblr.pages.StartPage;
 
 public class TestCase {
 	
-	protected AndroidDriver driver;
+	protected static AndroidDriver driver;
+	private static String username = "marcinr123@onet.eu";
+	private static String password = "grazynka01";
 	
 	
 	@BeforeClass
@@ -27,11 +31,18 @@ public class TestCase {
 
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		login();
 	}
 	
 	@AfterClass
 	public void cleanUp() {
 		driver.quit();
+	}
+	
+	public static void login() {
+		StartPage startPage = new StartPage(driver);
+		startPage.logIn(username, password);
+		
 	}
 
 }

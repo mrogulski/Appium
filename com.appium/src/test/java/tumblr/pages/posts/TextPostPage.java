@@ -17,8 +17,13 @@ public class TextPostPage extends Page{
 	}
 	
 	public void postText(String header, String text) {
+		driver.navigate().back();//to make field enabled
+		driver.navigate().back();
 		driver.findElement(titleLocator).sendKeys(header);
+		driver.findElement(postLocator).sendKeys(text);
 		driver.findElement(postButtonLocator).click();
 	}
 
 }
+
+
