@@ -4,6 +4,8 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,6 +14,7 @@ public abstract class Page {
 	
 	protected static AndroidDriver driver;
 	private By accessLoactor = By.id("com.android.packageinstaller:id/permission_allow_button");
+	private By closeNotifBarLocator = By.id("com.android.systemui:id/clear_notification");
 	
 	public Page(AndroidDriver driver) {
 		this.driver = driver;
@@ -34,5 +37,13 @@ public abstract class Page {
 		if(driver.findElement(accessLoactor).isDisplayed()) {
 			driver.findElement(accessLoactor).click();
 		}
+	}
+	
+	public void waitUntilItemsDisplayed(By locator) {
+		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	
+	public void closeNotificationBar() {
+		driver.findElement(closeNotifBarLocator).click();
 	}
 }

@@ -18,8 +18,9 @@ public class TestCase {
 	private static String username = "marcinr123@onet.eu";
 	private static String password = "test01test";
 	
+
 	
-	@BeforeClass
+	@BeforeSuite
 	public void setUp() throws MalformedURLException {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
@@ -28,13 +29,21 @@ public class TestCase {
 	    capabilities.setCapability("platformVersion", "6.0");
 		capabilities.setCapability("appPackage", "com.tumblr");
 		capabilities.setCapability("appActivity", "com.tumblr.ui.activity.RootActivity");
+		capabilities.setCapability("autoAcceptAlerts", true);
 
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 		driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
 		login();
 	}
 	
-	@AfterClass
+	@AfterMethod
+	public void clean(){
+		MainPage mainPage = new MainPage(driver);
+		mainPage.goToDashboard();
+	}
+	
+	
+	@AfterSuite
 	public void cleanUp() {
 		driver.quit();
 	}

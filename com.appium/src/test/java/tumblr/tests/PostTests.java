@@ -30,25 +30,22 @@ public class PostTests extends TestCase{
 		AccountsPostsPage accountsPostsPage = mainPage.goToAccount().goToAccountsPosts();
 		accountsPostsPage.scrollDown();
 		
-		WebElement recentPost = accountsPostsPage.getRecentPost();
+		WebElement recentPost = accountsPostsPage.getRecentTextPost();
 	
 		Assert.assertEquals(recentPost.getText(), postHeader);
 		
 	}
 	
 	@Test
-	public void postPhotoest(){
+	public void postPhotoTest(){
 		
 		
 		PhotoPostPage photoPostPage = mainPage.openComposeMenu().composePhotoPost();
 		photoPostPage.postPhoto(postContent);
 
 		AccountsPostsPage accountsPostsPage = mainPage.goToAccount().goToAccountsPosts();
-		accountsPostsPage.scrollDown();
-		
-		WebElement recentPost = accountsPostsPage.getRecentPost();
 	
-		Assert.assertEquals(recentPost.getText(), postHeader);
+		Assert.assertEquals(accountsPostsPage.getRecentPhotoPost().isDisplayed(), true);
 		
 	}
 
